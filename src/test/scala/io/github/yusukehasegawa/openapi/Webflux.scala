@@ -13,7 +13,8 @@ class Webflux extends Simulation {
 
   val scn = scenario("Webflux")
     .exec(http("request_0")
-      .get("/webflux/api/users/1"))
+      .get("/webflux/api/users/1")
+      .check(status.is(200)))
 
   setUp(scn.inject(constantUsersPerSec(200) during (30))).protocols(httpProtocol)
 }
