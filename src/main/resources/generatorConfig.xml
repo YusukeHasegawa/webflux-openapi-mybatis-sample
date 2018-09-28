@@ -4,67 +4,13 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-	<context id="dynamic" targetRuntime="MyBatis3">
+
+	<context id="beer" targetRuntime="MyBatis3">
 
 		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
 		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
 		<plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
-		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
-		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
-		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
-		<plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
-		<plugin type="org.mybatis.generator.plugins.VirtualPrimaryKeyPlugin" />
-		<plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
-
-
-		<commentGenerator>
-			<property name="suppressAllComments" value="true" />
-		</commentGenerator>
-
-		<jdbcConnection driverClass="org.h2.Driver"
-			connectionURL="jdbc:h2:mem:testdb;INIT=runscript from 'src/main/resources/schema.sql';"
-			userId="sa" password="">
-		</jdbcConnection>
-
-		<javaTypeResolver>
-			<property name="forceBigDecimals" value="false" />
-		</javaTypeResolver>
-
-		<javaModelGenerator targetPackage="io.github.yusukehasegawa.openapi.model"
-			targetProject="MAVEN">
-			<!-- <property name="trimStrings" value="true" /> -->
-		</javaModelGenerator>
-
-		<sqlMapGenerator targetPackage="sqlmaps"
-			targetProject="MAVEN" >
-		</sqlMapGenerator>
-
-		<javaClientGenerator type="MIXEDMAPPER"
-			targetPackage="io.github.yusukehasegawa.openapi.mapper" targetProject="MAVEN">
-		</javaClientGenerator>
-
-
-		<table tableName="USER_A" domainObjectName="User"
-			schema="public"
-			enableSelectByPrimaryKey="false"
-			enableDeleteByExample="false"
-			enableDeleteByPrimaryKey="false"
-			enableInsert="false"
-			enableUpdateByExample="false"
-			enableUpdateByPrimaryKey="false"
-			>
-			<property name="ignoreQualifiersAtRuntime" value="true"/>
-			<property name="runtimeTableName" value="USER_${suffix}"/>
-		</table>
-
-	</context>
-
-	<context id="static" targetRuntime="MyBatis3">
-
-		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
-		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
-		<plugin type="org.mybatis.generator.plugins.FluentBuilderMethodsPlugin" />
-		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+		<!-- <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" /> -->
 		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 		<plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
@@ -108,6 +54,19 @@
 			enableUpdateByPrimaryKey="false"
 			>
 			<property name="ignoreQualifiersAtRuntime" value="true"/>
+		</table>
+
+		<table tableName="USER_A" domainObjectName="User"
+			schema="public"
+			enableSelectByPrimaryKey="false"
+			enableDeleteByExample="false"
+			enableDeleteByPrimaryKey="false"
+			enableInsert="false"
+			enableUpdateByExample="false"
+			enableUpdateByPrimaryKey="false"
+			>
+			<property name="ignoreQualifiersAtRuntime" value="true"/>
+			<property name="runtimeTableName" value="USER_${suffix}"/>
 		</table>
 
 	</context>
