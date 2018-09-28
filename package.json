@@ -1,0 +1,12 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "loadtest": "^3.0.4"
+  },
+  "scripts": {
+    "loadtest-web": "loadtest -n 10000 -c 100 --rps 100 http://localhost/api/users/1",
+    "loadtest-webflux": "loadtest -n 10000 -c 100 --rps 100 http://localhost/webflux/api/users/1"
+  }
+}

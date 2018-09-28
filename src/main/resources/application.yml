@@ -1,0 +1,19 @@
+debug: true
+
+server:
+  port: ${PORT:80}
+  
+#  tomcat:
+#    max-threads: 30
+    
+spring:
+  h2:
+    console:
+      enabled: true
+
+mybatis:
+    configuration:
+        default-fetch-size: 100
+        default-statement-timeout: 60
+        map-underscore-to-camel-case: true
+    mapper-locations: classpath*:/sqlmaps/**/*.xml
