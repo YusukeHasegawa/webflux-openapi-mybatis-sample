@@ -2,7 +2,6 @@ package io.github.yusukehasegawa.openapi.service;
 
 import java.time.Duration;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import io.github.yusukehasegawa.openapi.mapper.UserAMapper;
@@ -14,12 +13,11 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor()
 public class UserService {
 
 	private final UserAMapper userAMapper;
 
-	@Qualifier("jdbcScheduler")
 	private final Scheduler jdbcScheduler;
 
 	public Mono<Long> countByExample(final UserAExample example) {
