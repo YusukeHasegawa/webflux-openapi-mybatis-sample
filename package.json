@@ -3,10 +3,20 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "loadtest": "^3.0.4"
+    "api-spec-converter": "^2.7.12",
+    "chai": "^4.2.0",
+    "dredd": "^5.2.0",
+    "loadtest": "^3.0.4",
+    "make-dir-cli": "^1.0.0",
+    "mocha": "^5.2.0",
+    "swagger-test-templates": "^1.5.0",
+    "yamljs": "^0.3.0"
   },
   "scripts": {
     "loadtest-web": "loadtest -n 10000 -c 100 --rps 100 http://localhost/api/users/1",
-    "loadtest-webflux": "loadtest -n 10000 -c 100 --rps 100 http://localhost/webflux/api/users/1"
+    "loadtest-webflux": "loadtest -n 10000 -c 100 --rps 100 http://localhost/webflux/api/users/1",
+    "api-spec-converter": "make-dir target/swagger && api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml src/docs/openapi/users.yml > target/swagger/users.yml",
+    "test": "yarn api-spec-converter && dredd -d true target/swagger/users.yml http://localhost/webflux",
+    "test-gen": "yarn api-spec-converter && node test-gen.js"
   }
 }

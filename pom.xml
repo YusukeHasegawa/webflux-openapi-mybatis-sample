@@ -30,6 +30,7 @@
 		<gatling-maven-plugin.version>3.0.0</gatling-maven-plugin.version>
 		<scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
 		<scala.version>2.12.4</scala.version>
+
 	</properties>
 
 	<profiles>

@@ -13,6 +13,7 @@ paths:
         - name: id
           in: path
           required: true
+          example: 1
           schema:
             type: integer
             format: "int64"
@@ -20,8 +21,14 @@ paths:
         '200':
           description: ''
           content:
-            application/json:
+            application/json;charset=UTF-8:
               schema: 
+                $ref: "#/components/schemas/user"
+        '404':
+          description: ''
+          content:
+            application/json;charset=UTF-8:
+              schema:
                 $ref: "#/components/schemas/user"
                     
   /api/users:
@@ -33,7 +40,7 @@ paths:
         '200':
           description: ''
           content:
-            application/json:
+            application/json;charset=UTF-8:
               schema:
                 type: array
                 items:
@@ -44,7 +51,9 @@ components:
     user:
       properties:
         id:
-          type: "integer"
+          type: integer
           format: "int64"
+          example: 1
         name:
           type: "string"
+          example: "foo"
