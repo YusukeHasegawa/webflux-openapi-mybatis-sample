@@ -18,6 +18,6 @@
     "api-spec-converter": "make-dir target/swagger && api-spec-converter --from=openapi_3 --to=swagger_2 --syntax=yaml src/docs/openapi/users.yml > target/swagger/users.yml",
     "test": "yarn api-spec-converter && dredd -d true target/swagger/users.yml http://localhost/webflux",
     "test-gen": "yarn api-spec-converter && node test-gen.js",
-    "api-doc": "yarn api-spec-converter && mvnw swagger2markup:convertSwagger2markup"
+    "api-doc": "yarn api-spec-converter && mvnw swagger2markup:convertSwagger2markup asciidoctor:process-asciidoc"
   }
 }
