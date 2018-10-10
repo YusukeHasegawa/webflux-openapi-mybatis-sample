@@ -10,7 +10,9 @@ spring:
   h2:
     console:
       enabled: true
-
+  datasource:
+    hikari:
+      maximum-pool-size: 100
 mybatis:
     configuration:
         default-fetch-size: 100

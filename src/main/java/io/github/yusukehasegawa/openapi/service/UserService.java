@@ -1,7 +1,5 @@
 package io.github.yusukehasegawa.openapi.service;
 
-import java.time.Duration;
-
 import org.springframework.stereotype.Service;
 
 import io.github.yusukehasegawa.openapi.mapper.UserAMapper;
@@ -36,7 +34,17 @@ public class UserService {
 	}
 
 	public Mono<UserA> slow(final Long id) {
-		return selectByPrimaryKey(id).delayElement(Duration.ofSeconds(5));
+		// return selectByPrimaryKey(id).delayElement(Duration.ofSeconds(5));
+		return Mono.defer(() -> Mono.justOrEmpty(userAMapper.selectByPrimaryKey(id)))
+				.doOnNext(c -> {
+					try {
+						Thread.sleep(1000);
+					}
+					catch (InterruptedException e) {
+						// TODO 自動生成された catch ブロック
+						e.printStackTrace();
+					}
+				}).subscribeOn(jdbcScheduler);
 	}
 
 }
